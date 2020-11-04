@@ -1,0 +1,2 @@
+INSERT INTO country (name, flag, locale) VALUES ('Serbia', 'rs', 'sr_RS');
+INSERT INTO location (name, latitude, longitude, timezone, country_id) VALUES ('Belgrade', 44.8167, 20.4667, 'Europe/Belgrade', 1);
