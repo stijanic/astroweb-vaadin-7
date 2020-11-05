@@ -7,6 +7,7 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/astro</property>
 		<property name="hibernate.connection.username">astro</property>
 		<property name="hibernate.connection.password">astro</property>
+		<property name="hibernate.default_schema">astro</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.show_sql">true</property>

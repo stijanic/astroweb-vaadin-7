@@ -24,6 +24,7 @@ public class CompatibilityCalculator {
 		String jdbcDbUrl = System.getenv("JDBC_DATABASE_URL");
 		if (null != jdbcDbUrl) {
 			jdbcUrlSettings.put("hibernate.connection.url", System.getenv("JDBC_DATABASE_URL"));
+			jdbcUrlSettings.put("hibernate.default_schema", "");
 		}
 
 		registry = new StandardServiceRegistryBuilder().
