@@ -1,6 +1,8 @@
 package com.astroweb.comparator.calculators;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,9 +18,18 @@ public class CompatibilityCalculator {
 	// We don't need to calculate all possible aspects but only these existing in the database
 	public double calculateAspects(NatalChartCalculator firstNatalChartCalculator, NatalChartCalculator secondNatalChartCalculator, char relationType) {
 
-		StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-				.configure() // configures settings from hibernate.cfg.xml
-		        .build();
+		StandardServiceRegistry registry;
+
+		Map<String,String> jdbcUrlSettings = new HashMap<>();
+		String jdbcDbUrl = System.getenv("JDBC_DATABASE_URL");
+		if (null != jdbcDbUrl) {
+			jdbcUrlSettings.put("hibernate.connection.url", System.getenv("JDBC_DATABASE_URL"));
+		}
+
+		registry = new StandardServiceRegistryBuilder().
+				configure("hibernate.cfg.xml").
+				applySettings(jdbcUrlSettings).
+				build();
 
 		SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
  
