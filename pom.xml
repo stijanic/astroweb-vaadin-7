@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<!-- export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 -->
 
@@ -14,8 +15,8 @@
 		<vaadin.version>7.6.1</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<jetty.plugin.version>9.2.3.v20140905</jetty.plugin.version>
-		<project.source.version>1.7</project.source.version>
-		<project.target.version>1.7</project.target.version>
+		<project.source.version>1.8</project.source.version>
+		<project.target.version>1.8</project.target.version>
 		<project.encoding>UTF-8</project.encoding>
 	</properties>
 
@@ -193,7 +194,11 @@
 					</filesets>
 				</configuration>
 			</plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
 			<!-- The Jetty plugin allows us to easily test the development build by
 				running jetty:run on the command line. -->
 			<plugin>
@@ -201,9 +206,9 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.plugin.version}</version>
 				<configuration>
-				    <scanIntervalSeconds>2</scanIntervalSeconds>
-				    <stopPort>7788</stopPort>
-				    <stopKey>7788</stopKey>
+					<scanIntervalSeconds>2</scanIntervalSeconds>
+					<stopPort>7788</stopPort>
+					<stopKey>7788</stopKey>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -213,7 +218,9 @@
 				<executions>
 					<execution>
 						<phase>package</phase>
-						<goals><goal>copy</goal></goals>
+						<goals>
+							<goal>copy</goal>
+						</goals>
 						<configuration>
 							<artifactItems>
 								<artifactItem>
@@ -237,7 +244,7 @@
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
-			
+
 			<repositories>
 				<repository>
 					<id>vaadin-prereleases</id>
