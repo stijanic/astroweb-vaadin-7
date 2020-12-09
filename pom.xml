@@ -264,4 +264,12 @@
 		</profile>
 	</profiles>
 
+	<!-- mvn deploy && check ~/.m2/settings.xml -->
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub stijanic Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/stijanic/astroweb-vaadin-7</url>
+		</repository>
+	</distributionManagement>
 </project>
